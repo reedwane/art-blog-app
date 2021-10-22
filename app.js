@@ -8,8 +8,9 @@ const app = express();
 // connecting to mongoDB
 const dbURI =
 	"mongodb+srv://reedwane:ayomide@cluster0.9yysg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGODB_URI || dbURI;
 mongoose
-	.connect(dbURI)
+	.connect(mongoDB)
 	.then((result) => {
 		// listen at port
 		const PORT = process.env.PORT || 3001;

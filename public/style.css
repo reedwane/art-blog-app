@@ -89,6 +89,7 @@ nav li {
 .trash {
 	padding: 2%;
 	width: fit-content;
+	cursor: pointer;
 	border: 2px solid red;
 	align-self: center;
 	justify-self: right;
