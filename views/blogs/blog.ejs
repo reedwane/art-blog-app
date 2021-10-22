@@ -1,0 +1,48 @@
+<html lang="en">
+
+<%- include('../partials/head.ejs')%>
+
+    <body>
+        <%- include('../partials/header.ejs') %>
+
+            <div class="content blog-details">
+                <div>
+
+                    <h2>
+                        <%= blog.title %>
+                    </h2>
+                    <p data-id="<%=blog.id%>" class="trash">Delete</p>
+                </div>
+
+                <h3>Author: <%= blog.author %>
+                </h3>
+                <p>
+                    <%= blog.post %>
+                </p>
+
+            </div>
+
+
+
+            <%- include('../partials/footer.ejs') %>
+
+                <script>
+                    const erase = document.querySelector('.trash');
+
+                    erase.addEventListener('click', (e) => {
+                        e.preventDefault();
+
+                        const url = `/blogs/${erase.dataset.id}`;
+
+                        fetch(url, {
+                            method: 'DELETE',
+                        })
+                            .then((response) => response.json())
+                            .then((data) => window.location.href = data.push)
+                            .catch(err => console.log(err));
+                    })
+                </script>
+
+    </body>
+
+</html>

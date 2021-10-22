@@ -1,0 +1,26 @@
+<html lang="en">
+<%- include('../partials/head.ejs') %>
+
+    <body>
+        <%- include('../partials/header.ejs') %>
+
+            <div class="create content">
+                <h2>Create a new blog</h2>
+                <form action="/blogs" method="POST">
+                    <label for="title">Blog Title</label>
+                    <input type="text" name="title" id="title" required>
+                    <label for="snippet">Blog Snippet</label>
+                    <input type="text" name="snippet" id="snippet" required>
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author" required>
+                    <label for="post">Blog Post</label>
+                    <textarea name="post" id="post" placeholder="Write your post..." required></textarea>
+                    <button>Submit</button>
+                </form>
+            </div>
+
+
+            <%- include('../partials/footer.ejs') %>
+    </body>
+
+</html>
