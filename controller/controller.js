@@ -55,9 +55,12 @@ const blog_create_post = (req, res) => {
 const blog_delete = (req, res) => {
 	const id = req.params.id;
 
-	Blog.findByIdAndDelete(id)
-		.then((result) => res.json({ push: "/blogs" }))
-		.catch((err) => console.log(err));
+	// preserving 2 posts as default
+	if (id !== "617428c2b1477dea4bf3f17e" && id !== "6174293bb1477dea4bf3f181") {
+		Blog.findByIdAndDelete(id)
+			.then((result) => res.json({ push: "/blogs" }))
+			.catch((err) => console.log(err));
+	}
 };
 
 // exports
