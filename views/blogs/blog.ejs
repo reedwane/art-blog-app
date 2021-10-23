@@ -14,10 +14,10 @@
                     <p data-id="<%=blog.id%>" class="trash">Delete</p>
                 </div>
 
-                <h3>Author: <%= blog.author %>
+                <h3>Author: <%- blog.author %>
                 </h3>
                 <p>
-                    <%= blog.post %>
+                    <%- blog.post.replace(/(?:\r\n|\r|\n)/g, '<br>' ) %>
                 </p>
 
             </div>

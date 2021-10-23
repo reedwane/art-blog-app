@@ -15,7 +15,11 @@ const blog_details = (req, res) => {
 	const id = req.params.id;
 	Blog.findById(id)
 		.then((result) => {
-			res.render("blogs/blog", { title: result.title, blog: result });
+			console.log(result);
+			res.render("blogs/blog", {
+				blog: result,
+				title: result.title,
+			});
 		})
 		.catch((err) => res.status(404).render("404", { title: "Blog not found" }));
 };
@@ -27,15 +31,27 @@ const blog_create_get = (req, res) => {
 
 // creating a post
 const blog_create_post = (req, res) => {
-	const blog = new Blog(req.body);
+	if (req.body) {
+		try {
+			const blog = new Blog({
+				title: req.body.title,
+				snippet: req.body.snippet,
+				author: req.body.author,
+				post: req.body.post,
+			});
 
-	blog
-		.save()
-		.then((result) => {
-			console.log(result);
-			res.redirect("/blogs");
-		})
-		.catch((err) => console.log(err));
+			blog
+				.save()
+				.then((result) => {
+					console.log(result);
+					res.redirect("/blogs");
+				})
+				.catch((err) => console.log(err));
+		} catch (error) {
+			console.log(error);
+		}
+		console.log(req.body);
+	}
 };
 
 // deleting a blog
