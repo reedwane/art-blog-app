@@ -15,7 +15,6 @@ const blog_details = (req, res) => {
 	const id = req.params.id;
 	Blog.findById(id)
 		.then((result) => {
-			console.log(result);
 			res.render("blogs/blog", {
 				blog: result,
 				title: result.title,
@@ -43,14 +42,12 @@ const blog_create_post = (req, res) => {
 			blog
 				.save()
 				.then((result) => {
-					console.log(result);
 					res.redirect("/blogs");
 				})
 				.catch((err) => console.log(err));
 		} catch (error) {
 			console.log(error);
 		}
-		console.log(req.body);
 	}
 };
 
