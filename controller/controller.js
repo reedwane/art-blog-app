@@ -32,12 +32,8 @@ const blog_create_get = (req, res) => {
 const blog_create_post = (req, res) => {
 	if (req.body) {
 		try {
-			const blog = new Blog({
-				title: req.body.title,
-				snippet: req.body.snippet,
-				author: req.body.author,
-				post: req.body.post,
-			});
+			const { title, snippet, author, post } = req.body;
+			const blog = new Blog({ title, snippet, author, post });
 
 			blog
 				.save()
